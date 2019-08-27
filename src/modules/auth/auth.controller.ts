@@ -17,19 +17,21 @@ export class AuthController implements Controller {
     this.initializeRoutes();
   }
 
-  private initializeRoutes(): void {
-    this.router.post(
-      `${this.path}/signup`,
-      validationMiddleware(CreateUserDTO),
-      this.signUp
-    );
-    this.router.post(
-      `${this.path}/signin`,
-      validationMiddleware(LoginUserDTO),
-      this.signIn
-    );
-    this.router.get(this.path, authMiddleware, this.getCurrentUser);
-  }
+  private initializeRoutes = (): void => {
+    this.router
+      .post(
+        `${this.path}/signup`,
+        validationMiddleware(CreateUserDTO),
+        this.signUp
+      )
+      .post(
+        `${this.path}/signin`,
+        validationMiddleware(LoginUserDTO),
+        this.signIn
+      )
+      .delete(this.path, authMiddleware, this.deleteAccount)
+      .get(this.path, authMiddleware, this.getCurrentUser);
+  };
 
   private signUp = async (
     req: Request,
@@ -42,7 +44,7 @@ export class AuthController implements Controller {
       const authData = await this.authService.signUp(userData);
       res.status(200).json(authData);
     } catch (err) {
-      next(err); // allows errorMiddleware to handle catched error
+      next(err); // allow errorMiddleware to handle catched error, throw default exception
     }
   };
 
@@ -56,6 +58,19 @@ export class AuthController implements Controller {
     try {
       const authData = await this.authService.signIn(loginData);
       res.status(200).json(authData);
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  private deleteAccount = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      await this.authService.deleteAccount(req);
+      res.status(200).json({ success: true });
     } catch (err) {
       next(err);
     }

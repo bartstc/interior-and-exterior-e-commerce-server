@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
+import { Request } from 'express';
 
 import { User } from './user.entity';
 import { CreateUserDTO } from './dto/create-user.dto';
@@ -10,11 +11,12 @@ import { TokenData } from '../../types/tokenData.interface';
 import { EmailOrUsernameInUseException } from '../../exceptions/EmailOrUsernameInUseException';
 import { WrongCredentialsException } from '../../exceptions/WrongCredentialException';
 import { HttpException } from '../../exceptions/HttpException';
+import { UserNotFoundException } from '../../exceptions/UserNotFoundException';
 
 export class AuthService {
   private userRepository = getRepository(User);
 
-  public async signUp(userData: CreateUserDTO) {
+  signUp = async (userData: CreateUserDTO) => {
     const existingUser = await this.userRepository
       .createQueryBuilder()
       .where('username = :username OR email = :email', {
@@ -36,9 +38,9 @@ export class AuthService {
 
     const { token } = this.createToken(savedUser);
     return { token, ...user };
-  }
+  };
 
-  public async signIn(loginData: LoginUserDTO) {
+  signIn = async (loginData: LoginUserDTO) => {
     const existingUser = await this.userRepository.findOne({
       email: loginData.email
     });
@@ -58,9 +60,16 @@ export class AuthService {
     } else {
       throw new WrongCredentialsException();
     }
-  }
+  };
 
-  public createToken(user: User): TokenData {
+  deleteAccount = async (req: Request) => {
+    const user: User = req.user;
+
+    const deletedUser = await this.userRepository.delete({ id: user.id });
+    if (deletedUser.affected === 0) throw new UserNotFoundException(user.id);
+  };
+
+  createToken = (user: User): TokenData => {
     const expiresIn = 60 * 60; // an hour
     const secret = process.env.JWT_SECRET;
     const dataStoredInToken: DataStoredInToken = {
@@ -71,5 +80,5 @@ export class AuthService {
       const token = jwt.sign(dataStoredInToken, secret, { expiresIn });
       return { token };
     } else throw new HttpException(500, 'Something goes wrong');
-  }
+  };
 }
