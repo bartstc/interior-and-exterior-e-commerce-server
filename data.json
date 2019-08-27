@@ -1,0 +1,246 @@
+{
+  "benches": [
+    {
+      "name": "Classic pink bench",
+      "collection": "exterior",
+      "type": "benches",
+      "price": 95.99,
+      "color": "pink",
+      "character": "classic",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/WFBdvXg/Classic-pink-bench.png",
+        "https://i.ibb.co/WFBdvXg/Classic-pink-bench.png",
+        "https://i.ibb.co/WFBdvXg/Classic-pink-bench.png"
+      ]
+    },
+    {
+      "name": "Modern simple bench",
+      "collection": "exterior",
+      "type": "benches",
+      "price": 175.99,
+      "color": "brown",
+      "character": "modern",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/k9vd54q/Modern-simple-bench.png",
+        "https://i.ibb.co/k9vd54q/Modern-simple-bench.png",
+        "https://i.ibb.co/k9vd54q/Modern-simple-bench.png"
+      ]
+    },
+    {
+      "name": "White classic bench",
+      "collection": "exterior",
+      "type": "benches",
+      "price": 125.99,
+      "color": "white",
+      "character": "classic",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/CKYGjSb/White-classic-bench.png",
+        "https://i.ibb.co/CKYGjSb/White-classic-bench.png",
+        "https://i.ibb.co/CKYGjSb/White-classic-bench.png"
+      ]
+    },
+    {
+      "name": "White Modern bench",
+      "collection": "exterior",
+      "type": "benches",
+      "price": 155.99,
+      "color": "white",
+      "character": "modern",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/HPBKKCK/White-Modern-bench.png",
+        "https://i.ibb.co/HPBKKCK/White-Modern-bench.png",
+        "https://i.ibb.co/HPBKKCK/White-Modern-bench.png"
+      ]
+    },
+    {
+      "name": "Wooden modern bench",
+      "collection": "exterior",
+      "type": "benches",
+      "price": 235.99,
+      "color": "brown",
+      "character": "modern",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/QbtjJkK/Wooden-modern-bench.png",
+        "https://i.ibb.co/QbtjJkK/Wooden-modern-bench.png",
+        "https://i.ibb.co/QbtjJkK/Wooden-modern-bench.png"
+      ]
+    }
+  ],
+  "flowerpots": [
+    {
+      "name": "Classic wooden flowerpot",
+      "collection": "exterior",
+      "type": "flowerpots",
+      "price": 15.99,
+      "color": "brown",
+      "character": "classic",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/1r1B91P/Classic-wooden-flower-pot.png",
+        "https://i.ibb.co/1r1B91P/Classic-wooden-flower-pot.png",
+        "https://i.ibb.co/1r1B91P/Classic-wooden-flower-pot.png"
+      ]
+    },
+    {
+      "name": "Modern minimalistic flowerpot",
+      "collection": "exterior",
+      "type": "flowerpots",
+      "price": 25.99,
+      "color": "white",
+      "character": "modern",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/G0d62R5/Modern-minimalistic-flower-pot.png",
+        "https://i.ibb.co/G0d62R5/Modern-minimalistic-flower-pot.png",
+        "https://i.ibb.co/G0d62R5/Modern-minimalistic-flower-pot.png"
+      ]
+    },
+    {
+      "name": "Modern white flowerpot",
+      "collection": "exterior",
+      "type": "flowerpots",
+      "price": 21.99,
+      "color": "white",
+      "character": "modern",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/0Vp4gFx/Modern-white-flower-pot.png",
+        "https://i.ibb.co/0Vp4gFx/Modern-white-flower-pot.png",
+        "https://i.ibb.co/0Vp4gFx/Modern-white-flower-pot.png"
+      ]
+    },
+    {
+      "name": "Retro wooden flowerpot",
+      "collection": "exterior",
+      "type": "flowerpots",
+      "price": 21.99,
+      "color": "brown",
+      "character": "classic",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/s3w1tTP/Retro-wooden-flower-pot.png",
+        "https://i.ibb.co/s3w1tTP/Retro-wooden-flower-pot.png",
+        "https://i.ibb.co/s3w1tTP/Retro-wooden-flower-pot.png"
+      ]
+    },
+    {
+      "name": "Simple modern white flowerpot",
+      "collection": "exterior",
+      "type": "flowerpots",
+      "price": 14.99,
+      "color": "white",
+      "character": "modern",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/zH23dKf/Simple-modern-white-flower-pot.png",
+        "https://i.ibb.co/zH23dKf/Simple-modern-white-flower-pot.png",
+        "https://i.ibb.co/zH23dKf/Simple-modern-white-flower-pot.png"
+      ]
+    },
+    {
+      "name": "Stone flowerpot",
+      "collection": "exterior",
+      "type": "flowerpots",
+      "price": 43.99,
+      "color": "brown",
+      "character": "classic",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/r7X9WQW/Stone-flower-pot.png",
+        "https://i.ibb.co/r7X9WQW/Stone-flower-pot.png",
+        "https://i.ibb.co/r7X9WQW/Stone-flower-pot.png"
+      ]
+    }
+  ],
+  "plants": [
+    {
+      "name": "Aloe Vera plant",
+      "collection": "exterior",
+      "type": "plants",
+      "price": 20.99,
+      "color": "green",
+      "character": "leafy",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/nP2J8Hh/Aloe-Vera-plant.png",
+        "https://i.ibb.co/nP2J8Hh/Aloe-Vera-plant.png",
+        "https://i.ibb.co/nP2J8Hh/Aloe-Vera-plant.png"
+      ]
+    },
+    {
+      "name": "Green cactus plant",
+      "collection": "exterior",
+      "type": "plants",
+      "price": 25.99,
+      "color": "green",
+      "character": "cactus",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/WvXBvC0/Green-cactus-plant.png",
+        "https://i.ibb.co/WvXBvC0/Green-cactus-plant.png",
+        "https://i.ibb.co/WvXBvC0/Green-cactus-plant.png"
+      ]
+    },
+    {
+      "name": "Green leaf plant",
+      "collection": "exterior",
+      "type": "plants",
+      "price": 12.99,
+      "color": "green",
+      "character": "leafy",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/3M0Pb3M/Green-leaf-plant.png",
+        "https://i.ibb.co/3M0Pb3M/Green-leaf-plant.png",
+        "https://i.ibb.co/3M0Pb3M/Green-leaf-plant.png"
+      ]
+    },
+    {
+      "name": "Green leafed plant",
+      "collection": "exterior",
+      "type": "plants",
+      "price": 32.99,
+      "color": "green",
+      "character": "leafy",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/9pvb0sQ/Green-leafed-plant.png",
+        "https://i.ibb.co/9pvb0sQ/Green-leafed-plant.png",
+        "https://i.ibb.co/9pvb0sQ/Green-leafed-plant.png"
+      ]
+    },
+    {
+      "name": "Green succulent",
+      "collection": "exterior",
+      "type": "plants",
+      "price": 18.99,
+      "color": "green",
+      "character": "leafy",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/BjrZthh/Green-succulent.png",
+        "https://i.ibb.co/BjrZthh/Green-succulent.png",
+        "https://i.ibb.co/BjrZthh/Green-succulent.png"
+      ]
+    },
+    {
+      "name": "Potted green plant",
+      "collection": "exterior",
+      "type": "plants",
+      "price": 28.99,
+      "color": "green",
+      "character": "leafy",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "images": [
+        "https://i.ibb.co/7t3NdNy/Potted-green-plant.png",
+        "https://i.ibb.co/7t3NdNy/Potted-green-plant.png",
+        "https://i.ibb.co/7t3NdNy/Potted-green-plant.png"
+      ]
+    }
+  ]
+}

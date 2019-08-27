@@ -7,6 +7,7 @@ import { validateEnv } from './utils/validateEnv';
 import { App } from './app';
 import { User } from './modules/auth/user.entity';
 import { AuthController } from './modules/auth/auth.controller';
+import { ProductController } from './modules/product/product.controller';
 
 // expand Request interface with a new property: user: User
 declare global {
@@ -29,7 +30,7 @@ validateEnv();
     return err;
   }
 
-  const app = new App([new AuthController()]);
+  const app = new App([new AuthController(), new ProductController()]);
   app.listen();
 })();
 

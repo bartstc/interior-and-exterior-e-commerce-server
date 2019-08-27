@@ -1,5 +1,6 @@
 import { ConnectionOptions } from 'typeorm';
 import { User } from './modules/auth/user.entity';
+import { Product } from './modules/product/product.entity';
 
 const developmentConfig: ConnectionOptions = {
   type: 'postgres',
@@ -8,7 +9,7 @@ const developmentConfig: ConnectionOptions = {
   username: process.env.POSTGRES_USERNAME,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  entities: [User],
+  entities: [User, Product],
   migrations: ['src/migration/**/*.ts'],
   synchronize: true,
   logging: true
@@ -17,7 +18,7 @@ const developmentConfig: ConnectionOptions = {
 const productionConfig: ConnectionOptions = {
   type: 'postgres',
   url: process.env.DATABASE_URL, // heroku db addons
-  entities: [User],
+  entities: [User, Product],
   synchronize: true // should be false in production
 };
 
