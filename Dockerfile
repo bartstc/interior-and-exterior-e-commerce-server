@@ -2,9 +2,9 @@ FROM node
 
 WORKDIR /interior-and-exterior/server
 
-COPY ./package.josn .
+COPY ./package.json .
 
-RUN npm install --production
+RUN npm install
 
 COPY ./build ./build
 COPY ./.env.prod ./.env
