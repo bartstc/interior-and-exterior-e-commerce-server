@@ -44,9 +44,9 @@ export class ProductController implements Controller {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const { id } = req.params;
-
     try {
+      const { id } = req.params;
+
       await this.productService.deleteProduct(id);
       res.status(200).json({ success: true });
     } catch (err) {
@@ -59,9 +59,9 @@ export class ProductController implements Controller {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const { id } = req.params;
-
     try {
+      const { id } = req.params;
+
       const product = await this.productService.getProduct(id);
       res.status(200).json(product);
     } catch (err) {
@@ -74,9 +74,9 @@ export class ProductController implements Controller {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const { type } = req.params;
-
     try {
+      const { type } = req.params;
+
       const products = await this.productService.getProductsByType(type);
       res.status(200).json(products);
     } catch (err) {
@@ -89,9 +89,9 @@ export class ProductController implements Controller {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const { query } = req.params;
-
     try {
+      const { query } = req.params;
+
       const products = await this.productService.getProductsByQuery(query);
       res.status(200).json(products);
     } catch (err) {

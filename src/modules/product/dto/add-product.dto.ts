@@ -1,6 +1,7 @@
+import { IsString, IsNotEmpty, IsNumber, IsArray } from 'class-validator';
+
 import { Collection } from '../../../types/collection.enum';
 import { Type } from '../../../types/type.enum';
-import { IsString, IsNotEmpty, IsNumber, IsArray } from 'class-validator';
 
 export class AddProductDTO {
   @IsString()

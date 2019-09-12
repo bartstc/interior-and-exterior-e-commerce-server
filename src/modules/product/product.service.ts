@@ -38,6 +38,8 @@ export class ProductService {
 
   getProductsByType = async (type: string): Promise<Product[]> => {
     try {
+      if (type === 'all') return await this.productRepository.find();
+
       return await this.productRepository.find({
         where: { type }
       });
