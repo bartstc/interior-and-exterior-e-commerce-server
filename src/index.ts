@@ -40,6 +40,6 @@ validateEnv();
 // heroku logs --tail -> debugging
 
 /* Start conf
-- npm init // package.json
+- npm init
 - tsc --init // tsconfig.json
 */

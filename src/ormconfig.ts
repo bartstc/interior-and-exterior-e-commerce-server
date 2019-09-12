@@ -4,11 +4,7 @@ import { Product } from './modules/product/product.entity';
 
 const developmentConfig: ConnectionOptions = {
   type: 'postgres',
-  host: process.env.POSTGRES_HOST,
-  port: Number(process.env.POSTGRES_PORT),
-  username: process.env.POSTGRES_USERNAME,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DB,
+  url: process.env.POSTGRES_DB_URL,
   entities: [User, Product],
   migrations: ['src/migration/**/*.ts'],
   synchronize: true,
@@ -17,9 +13,9 @@ const developmentConfig: ConnectionOptions = {
 
 const productionConfig: ConnectionOptions = {
   type: 'postgres',
-  url: process.env.DATABASE_URL, // heroku db addons
+  url: process.env.POSTGRES_DB_URL,
   entities: [User, Product],
-  synchronize: true // should be false in production
+  synchronize: false
 };
 
 export const config =
