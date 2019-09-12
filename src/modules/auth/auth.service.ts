@@ -73,7 +73,8 @@ export class AuthService {
     const expiresIn = 60 * 60; // an hour
     const secret = process.env.JWT_SECRET;
     const dataStoredInToken: DataStoredInToken = {
-      id: user.id
+      id: user.id,
+      username: user.username
     };
 
     if (secret) {
