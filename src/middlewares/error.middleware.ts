@@ -4,12 +4,12 @@ import { HttpException } from '../exceptions/HttpException';
 
 export const errorMiddleware = (
   error: HttpException,
-  req: Request,
+  _: Request,
   res: Response,
-  next: NextFunction
+  __: NextFunction
 ) => {
   const status = error.status || 500;
-  const message = error.message || 'Something went wrong';
+  const message = error.message || 'Internal server error';
   res.status(status).send({
     message,
     status

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node build/index.js",
-    "start:dev": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "start:dev": "nodemon --exec ts-node src/index.ts",
     "build": "rimraf build && tsc"
   },
   "author": "Bart",
@@ -36,6 +36,9 @@
     "@types/jsonwebtoken": "^8.3.3",
     "@types/node": "^12.7.2",
     "rimraf": "^3.0.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   }
 }

@@ -1,12 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express';
 
+import { User } from './user.entity';
 import { AuthService } from './auth.service';
+import { Controller } from '../../types/controller.interface';
 import { LoginUserDTO } from './dto/login-user.dto';
 import { CreateUserDTO } from './dto/create-user.dto';
-import { User } from './user.entity';
-import { Controller } from '../../types/controller.interface';
-import { validationMiddleware } from '../../middlewares/validation.middleware';
 import { authMiddleware } from '../../middlewares/auth.middleware';
+import { validationMiddleware } from '../../middlewares/validation.middleware';
 
 export class AuthController implements Controller {
   public path = '/auth';

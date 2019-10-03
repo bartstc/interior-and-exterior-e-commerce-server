@@ -13,32 +13,34 @@ export class ProductService {
       ...addProductDTO
     });
 
-    await this.productRepository.save(newProduct);
-    return newProduct;
+    return this.productRepository.save(newProduct);
   };
 
   deleteProduct = async (id: string): Promise<void> => {
     const result = await this.productRepository.delete({ id });
 
-    if (result.affected === 0) throw new ProductNotFoundException(id);
-  };
-
-  getProduct = async (id: string): Promise<Product> => {
-    try {
-      const product = await this.productRepository.findOne({
-        where: { id }
-      });
-
-      if (product) return product;
-      else throw new ProductNotFoundException(id);
-    } catch (err) {
+    if (result.affected === 0) {
       throw new ProductNotFoundException(id);
     }
   };
 
+  getProduct = async (id: string): Promise<Product> => {
+    const product = await this.productRepository.findOne({
+      where: { id }
+    });
+
+    if (!product) {
+      throw new ProductNotFoundException(id);
+    }
+
+    return product;
+  };
+
   getProductsByType = async (type: string): Promise<Product[]> => {
     try {
-      if (type === 'all') return await this.productRepository.find();
+      if (type === 'all') {
+        return await this.productRepository.find();
+      }
 
       return await this.productRepository.find({
         where: { type }

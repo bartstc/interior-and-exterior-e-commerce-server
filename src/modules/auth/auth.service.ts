@@ -7,27 +7,26 @@ import { User } from './user.entity';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { LoginUserDTO } from './dto/login-user.dto';
 import { DataStoredInToken } from '../../types/dataStoredInToken.interface';
-import { TokenData } from '../../types/tokenData.interface';
-import { EmailOrUsernameInUseException } from '../../exceptions/EmailOrUsernameInUseException';
-import { WrongCredentialsException } from '../../exceptions/WrongCredentialException';
 import { HttpException } from '../../exceptions/HttpException';
 import { UserNotFoundException } from '../../exceptions/UserNotFoundException';
+import { WrongCredentialsException } from '../../exceptions/WrongCredentialException';
+import { EmailOrUsernameInUseException } from '../../exceptions/EmailOrUsernameInUseException';
 
 export class AuthService {
   private userRepository = getRepository(User);
 
   signUp = async (userData: CreateUserDTO) => {
+    const { username, email, password } = userData;
     const existingUser = await this.userRepository
       .createQueryBuilder()
-      .where('username = :username OR email = :email', {
-        username: userData.username,
-        email: userData.email
-      })
+      .where('username = :username OR email = :email', { username, email })
       .getMany();
 
-    if (existingUser.length !== 0) throw new EmailOrUsernameInUseException();
+    if (existingUser.length !== 0) {
+      throw new EmailOrUsernameInUseException();
+    }
 
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = this.userRepository.create({
       ...userData,
       password: hashedPassword
@@ -36,50 +35,46 @@ export class AuthService {
     const savedUser = await this.userRepository.save(newUser);
     const user = { id: savedUser.id, username: savedUser.username };
 
-    const { token } = this.createToken(savedUser);
+    const token = this.createToken(savedUser);
     return { token, ...user };
   };
 
-  signIn = async (loginData: LoginUserDTO) => {
-    const existingUser = await this.userRepository.findOne({
-      email: loginData.email
-    });
-    if (existingUser) {
-      const isMatch = await bcrypt.compare(
-        loginData.password,
-        existingUser.password
-      );
-      if (isMatch) {
-        const user = { id: existingUser.id, username: existingUser.username };
+  signIn = async ({ email, password }: LoginUserDTO) => {
+    const existingUser = await this.userRepository.findOne({ email });
 
-        const { token } = this.createToken(existingUser);
-        return { token, ...user };
-      } else {
-        throw new WrongCredentialsException();
-      }
-    } else {
+    if (!existingUser) {
       throw new WrongCredentialsException();
     }
+
+    const isMatch = await bcrypt.compare(password, existingUser.password);
+
+    if (!isMatch) {
+      throw new WrongCredentialsException();
+    }
+
+    const { id, username } = existingUser;
+    const token = this.createToken(existingUser);
+    return { token, id, username };
   };
 
   deleteAccount = async (req: Request) => {
     const user: User = req.user;
 
     const deletedUser = await this.userRepository.delete({ id: user.id });
-    if (deletedUser.affected === 0) throw new UserNotFoundException(user.id);
+    if (deletedUser.affected === 0) {
+      throw new UserNotFoundException(user.id);
+    }
   };
 
-  createToken = (user: User): TokenData => {
+  createToken = ({ id, username }: User): string => {
     const expiresIn = 60 * 60; // an hour
     const secret = process.env.JWT_SECRET;
-    const dataStoredInToken: DataStoredInToken = {
-      id: user.id,
-      username: user.username
-    };
+    const dataStoredInToken: DataStoredInToken = { id, username };
 
-    if (secret) {
-      const token = jwt.sign(dataStoredInToken, secret, { expiresIn });
-      return { token };
-    } else throw new HttpException(500, 'Something goes wrong');
+    if (!secret) {
+      throw new HttpException(500, 'Something goes wrong');
+    }
+
+    return jwt.sign(dataStoredInToken, secret, { expiresIn });
   };
 }
