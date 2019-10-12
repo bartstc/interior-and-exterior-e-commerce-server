@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
-import { Request } from 'express';
 
 import { User } from './user.entity';
+import { User as IUser } from './interfaces/user.interface';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { LoginUserDTO } from './dto/login-user.dto';
 import { DataStoredInToken } from '../../types/dataStoredInToken.interface';
@@ -57,16 +57,16 @@ export class AuthService {
     return { token, id, username };
   };
 
-  deleteAccount = async (req: Request) => {
-    const user: User = req.user;
-
-    const deletedUser = await this.userRepository.delete({ id: user.id });
+  deleteAccount = async (id: string) => {
+    const deletedUser = await this.userRepository.delete({ id });
     if (deletedUser.affected === 0) {
-      throw new UserNotFoundException(user.id);
+      throw new UserNotFoundException(id);
     }
+
+    return deletedUser;
   };
 
-  createToken = ({ id, username }: User): string => {
+  createToken = ({ id, username }: IUser): string => {
     const expiresIn = 60 * 60; // an hour
     const secret = process.env.JWT_SECRET;
     const dataStoredInToken: DataStoredInToken = { id, username };

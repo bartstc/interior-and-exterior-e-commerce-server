@@ -64,12 +64,12 @@ export class AuthController implements Controller {
   };
 
   private deleteAccount = async (
-    req: Request,
+    { user: { id } }: Request,
     res: Response,
     next: NextFunction
   ): Promise<void> => {
     try {
-      await this.authService.deleteAccount(req);
+      await this.authService.deleteAccount(id);
       res.status(200).json({ success: true });
     } catch (err) {
       next(err);
