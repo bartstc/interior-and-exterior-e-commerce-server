@@ -18,12 +18,15 @@ Full stack project based on React, Node.js and TypeScript. It's a simple concept
 * [TypeORM](https://typeorm.io/#/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [Docker](https://www.docker.com/)
+* [Jest](https://jestjs.io/docs/en/getting-started) unit testing
+* [Supertest](https://github.com/visionmedia/supertest) integration testing
 
 ## Project Learning Goals
 
 * Learn redux-saga and reselect library
 * Practice React with TypeScript
 * Try Docker
+* Unit and integration testing with jest and supertest
 
 ## Preview
 
