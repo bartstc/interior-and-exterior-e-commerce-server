@@ -5,6 +5,7 @@ import { ProductService } from './product.service';
 import { AddProductDTO } from './dto/add-product.dto';
 import { validationMiddleware } from '../../middlewares/validation.middleware';
 import { HttpException } from '../../exceptions/HttpException';
+import { ProductsNotFoundException } from '../../exceptions/ProductsNotFoundException';
 
 export class ProductController implements Controller {
   public path = '/products';
@@ -80,7 +81,7 @@ export class ProductController implements Controller {
       const products = await this.productService.getProductsByType(type);
       res.status(200).json(products);
     } catch (err) {
-      next(err);
+      next(new ProductsNotFoundException());
     }
   };
 
@@ -95,7 +96,7 @@ export class ProductController implements Controller {
       const products = await this.productService.getProductsByQuery(query);
       res.status(200).json(products);
     } catch (err) {
-      next(err);
+      next(new ProductsNotFoundException());
     }
   };
 }

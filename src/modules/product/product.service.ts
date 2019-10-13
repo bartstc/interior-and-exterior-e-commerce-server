@@ -1,9 +1,8 @@
-import { getRepository } from 'typeorm';
+import { getRepository, DeleteResult } from 'typeorm';
 
 import { Product } from './product.entity';
 import { AddProductDTO } from './dto/add-product.dto';
 import { ProductNotFoundException } from '../../exceptions/ProductNotFoundException';
-import { ProductsNotFoundException } from '../../exceptions/ProductsNotFoundException';
 
 export class ProductService {
   private productRepository = getRepository(Product);
@@ -16,12 +15,14 @@ export class ProductService {
     return this.productRepository.save(newProduct);
   };
 
-  deleteProduct = async (id: string): Promise<void> => {
+  deleteProduct = async (id: string): Promise<DeleteResult> => {
     const result = await this.productRepository.delete({ id });
 
     if (result.affected === 0) {
       throw new ProductNotFoundException(id);
     }
+
+    return result;
   };
 
   getProduct = async (id: string): Promise<Product> => {
@@ -37,27 +38,19 @@ export class ProductService {
   };
 
   getProductsByType = async (type: string): Promise<Product[]> => {
-    try {
-      if (type === 'all') {
-        return await this.productRepository.find();
-      }
-
-      return await this.productRepository.find({
-        where: { type }
-      });
-    } catch (err) {
-      throw new ProductsNotFoundException();
+    if (type === 'all') {
+      return this.productRepository.find();
     }
+
+    return this.productRepository.find({
+      where: { type }
+    });
   };
 
   getProductsByQuery = async (query: string): Promise<Product[]> => {
-    try {
-      return await this.productRepository
-        .createQueryBuilder('product')
-        .where('product.name ilike :name', { name: `%${query}%` })
-        .getMany();
-    } catch (err) {
-      throw new ProductsNotFoundException();
-    }
+    return this.productRepository
+      .createQueryBuilder('product')
+      .where('product.name ilike :name', { name: `%${query}%` })
+      .getMany();
   };
 }

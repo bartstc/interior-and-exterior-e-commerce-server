@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-import { Collection } from '../../types/collection.enum';
-import { Type } from '../../types/type.enum';
+import { Collection } from '../../types/collection.type';
+import { Type } from '../../types/type.type';
 
 @Entity('products')
 export class Product {
